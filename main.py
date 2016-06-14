@@ -39,7 +39,10 @@ def cli_args():
 
 def main():
     args = cli_args()
-    conn_string = "host=%(host)s dbname=%(database)s user=%(user)s password=%(password)s" % {'host': args.host, 'database': args.database, 'user': args.user, 'password': args.password}
+    conn_string = "host=%(host)s dbname=%(database)s user=%(user)s password=%(password)s" % {'host': args.host,
+                                                                                             'database': args.database,
+                                                                                             'user': args.user,
+                                                                                             'password': args.password}
     db = psycopg2.connect(conn_string)
 
     affected_rows = args.chunk_size
