@@ -1,0 +1,66 @@
+#
+# The MySQL database server configuration file.
+#
+[client]
+port		= {{ mysql_port }}
+socket		= /var/run/mysqld/mysqld.sock
+default-character-set   = utf8
+
+# This was formally known as [safe_mysqld]. Both versions are currently parsed.
+[mysqld_safe]
+socket		= /var/run/mysqld/mysqld.sock
+nice		= 0
+
+[mysqld]
+user		= mysql
+pid-file	= /var/run/mysqld/mysqld.pid
+socket		= /var/run/mysqld/mysqld.sock
+port		= {{ mysql_port }}
+basedir		= /usr
+datadir		= {{ mysql_data_dir }}
+tmpdir		= {{ tmp_dir }}
+lc-messages-dir	= /usr/share/mysql
+skip-external-locking
+skip-name-resolve
+
+character-set-server    = utf8
+collation-server        = utf8_general_ci
+init_connect            = 'SET collation_connection = utf8_general_ci'
+init_connect            = 'SET NAMES utf8'
+
+default-storage-engine = innodb
+innodb_file_per_table = 1
+event-scheduler = {{ event_scheduler }}
+
+bind-address		= {{ mysql_bind_address }}
+
+innodb_buffer_pool_size = {{ innodb_buffer_pool_size }}
+innodb_log_file_size = {{innodb_log_file_size }}
+innodb_log_buffer_size = {{ innodb_log_buffer_size }}
+key_buffer_size = {{ key_buffer_size }}
+innodb-log-files-in-group = {{ innodb_log_files_in_group }}
+innodb-flush-log-at-trx-commit = {{ innodb_flush_log_at_trx_commit }}
+innodb_lock_wait_timeout = {{ innodb_lock_wait_timeout }}
+
+max_allowed_packet	= {{ max_allowed_packet }}
+thread_stack		= 192K
+thread_cache_size       = 8
+
+max_connections        = 512
+wait_timeout		= 120
+
+query_cache_limit	= 1M
+query_cache_size        = 32M
+query-cache-type = 1
+
+tmp-table-size                 = {{ tmp_table_size }}
+max-heap-table-size            = {{ max_heap_table_size }}
+thread-cache-size              = 50
+open-files-limit               = 65535
+table-definition-cache         = 4096
+table-open-cache               = 4096
+
+
+log_error = /var/log/mysql/error.log
+
+!includedir /etc/mysql/conf.d/

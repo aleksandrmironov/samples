@@ -1,0 +1,4 @@
+---
+# tasks file for screen
+- name: Screen installation
+  apt: name=screen state=present update_cache=yes

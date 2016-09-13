@@ -1,0 +1,10 @@
+- name: all
+  hosts: all
+
+  vars_files:
+    - "vars/iptables.yml"
+
+  roles:
+    - iptables
+    - ldap-client
+    - sysctl

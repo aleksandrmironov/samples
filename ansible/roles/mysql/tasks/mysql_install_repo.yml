@@ -1,0 +1,7 @@
+# roles/nginx/tasks/mysql_install_debianbased.yml
+---
+- name: Install mysql repo prefs
+  apt: deb=http://dev.mysql.com/get/mysql-apt-config_{{ mysql_apt_config_ver }}_all.deb
+
+- name: Update apt cache
+  apt: update_cache=yes

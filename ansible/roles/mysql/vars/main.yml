@@ -1,0 +1,7 @@
+---
+env:
+ RUNLEVEL: 1
+
+monitoring_user_privs:
+  - 'mysql.*:SELECT'
+  - '*.*:PROCESS,SUPER,REPLICATION CLIENT'
