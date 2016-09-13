@@ -2,9 +2,8 @@
   hosts: all
 
   vars_files:
-    - "vars/iptables.yml"
+    - "vars/mysql.yml"
 
   roles:
-    - iptables
-    - ldap-client
-    - sysctl
+    - screen
+    - mysql
