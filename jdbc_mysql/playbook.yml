@@ -27,7 +27,7 @@
     - name: Copy mysql jdbc jar to remote location
       copy:
         src: "{{ mysql_jdbc_local_path }}"
-        dest: "{{{ sqoop_lib_folder }}}"
+        dest: "{{ sqoop_lib_folder }}"
         owner: "{{ sqoop_user }}"
         group: "{{ sqoop_group }}"
         mode: 0644
