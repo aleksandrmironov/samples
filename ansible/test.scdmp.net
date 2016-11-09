@@ -1,9 +1,9 @@
 - name: all
   hosts: all
 
-  vars_files:
-    - "vars/mysql.yml"
+#  vars_files:
+#    - "vars/mysql.yml"
 
   roles:
     - screen
-    - mysql
+#    - mysql

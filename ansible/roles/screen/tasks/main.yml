@@ -1,4 +1,9 @@
 ---
 # tasks file for screen
 - name: Screen installation
+  yum: name=screen state=present
+  when: ansible_os_family == "RedHat"
+
+- name: Screen installation
   apt: name=screen state=present update_cache=yes
+  when: ansible_os_family == "Debian"

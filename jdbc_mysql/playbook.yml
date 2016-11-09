@@ -1,0 +1,33 @@
+- name: all
+  hosts: all
+
+  vars:
+    sqoop_lib_folder: '/var/lib/sqoop'
+    sqoop_user: 'sqoop'
+    sqoop_group: 'sqoop'
+    mysql_jdbc_version: '5.1.40'
+    mysql_jdbc_local_path: '/home/user/mysql-connector-java-{{ mysql_jdbc_version }}-bin.jar'
+
+  tasks:
+    - name: Check if sqoop lib folder exists
+      command: test -d {{ sqoop_lib_folder }}
+      register: sqoop_lib_folder_exists_check
+      changed_when: False
+      ignore_errors: True
+
+    - name: Create sqoop lib folder
+      file:
+        path: "{{ sqoop_lib_folder }}"
+        state: directory
+        mode: 0755
+        owner: "{{ sqoop_user }}"
+        group: "{{ sqoop_group }}"
+      when: sqoop_lib_folder_exists_check | failed
+
+    - name: Copy mysql jdbc jar to remote location
+      copy:
+        src: "{{ mysql_jdbc_local_path }}"
+        dest: "{{{ sqoop_lib_folder }}}"
+        owner: "{{ sqoop_user }}"
+        group: "{{ sqoop_group }}"
+        mode: 0644
