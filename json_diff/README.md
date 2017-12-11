@@ -70,7 +70,7 @@ Api returns three results of comparison:
   
 ## HOWTOs ##
     
-#### How to upload JSON from linux shell ####     
+#### How to upload JSON from linux shell   
 HowTo upload base64 encoded JSON to left|right endpoint:
 ```bash
 $ echo '{"foo":"bar"}' | base64 | curl -vvv --data @- http://example.com/v1/diff/aaa/left
