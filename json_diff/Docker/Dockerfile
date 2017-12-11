@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y supervisor \
 && rm -rf /var/lib/apt/lists/*
 # Custom Supervisord config
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY app /app
+#COPY app /app
 
 WORKDIR /app
 VOLUME /app
